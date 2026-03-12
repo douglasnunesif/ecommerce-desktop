@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 public class TelaLoginController {
 
     @FXML
-    private void switchToSecondary() throws IOException {
-        App.setRoot("secondary");
+    private void abrirTelaCadastroUsuario() throws IOException {
+        App.setRoot("telaCadastroUsuario");
     }
 }
