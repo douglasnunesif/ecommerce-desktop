@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -39,6 +40,8 @@
                   <FontIcon iconColor="#0598ff" iconLiteral="fas-times" iconSize="20" selectionFill="#0598ff" />
                </graphic>
             </Button>
+            <Label fx:id="lblUsuario" layoutX="97.0" layoutY="266.0" textFill="#ff0101" />
+            <Label fx:id="lblSenha" layoutX="97.0" layoutY="324.0" textFill="RED" />
          </children>
       </AnchorPane>
    </right>
