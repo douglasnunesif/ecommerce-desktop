@@ -37,7 +37,7 @@
    <right>
       <AnchorPane prefHeight="500.0" prefWidth="449.0" BorderPane.alignment="CENTER">
          <children>
-            <Text fill="#0598ff" layoutX="54.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastrar conta de usuario">
+            <Text fx:id="lblTelaEditarUsuario" fill="#0598ff" layoutX="54.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastrar conta de usuario">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
@@ -46,7 +46,7 @@
             <TextField fx:id="txtEmail" layoutX="65.0" layoutY="274.0" prefHeight="29.0" prefWidth="344.0" promptText="e-mail" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0 0 3 0;" />
             <TextField fx:id="txtNomeUsuario" layoutX="64.0" layoutY="234.0" prefHeight="26.0" prefWidth="147.0" promptText="Nome de Usuario" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0 0 3 0;" />
             <FontIcon iconColor="#0598ff" iconLiteral="fas-user-plus" iconSize="60" layoutX="186.0" layoutY="99.0" />
-            <Button layoutX="120.0" layoutY="437.0" mnemonicParsing="false" onAction="#cadastrarUsuario" style="-fx-background-color: #0598ff;" text="Cadastrar" textFill="WHITE">
+            <Button fx:id="btnCadastrar" layoutX="120.0" layoutY="437.0" mnemonicParsing="false" onAction="#cadastrarUsuario" style="-fx-background-color: #0598ff;" text="Cadastrar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>

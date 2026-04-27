@@ -44,4 +44,21 @@ public class UsuarioDAO {
             return false;
         }
     }
+
+    void atualizar(Usuario u) {
+        String sql = "UPDATE usuarios SET nomeCompleto=?, nomeUsuario=?, email=?, senha=?, cpf=? WHERE nomeUsuario=?";
+        try (Connection conn = Conexao.conectar()) {
+            PreparedStatement stmt = conn.prepareCall(sql);
+            stmt.setString(1, u.getNomeCompleto());
+            stmt.setString(2, u.getNomeUsuario());
+            stmt.setString(3, u.getEmail());
+            stmt.setString(4, u.getSenha());
+            stmt.setString(5, u.getCpf());
+            stmt.setString(6, u.getNomeUsuario());
+            stmt.executeUpdate();
+            System.out.println("Usuário " + u.getNomeCompleto() + " foi atualizado com sucesso!");
+        } catch (Exception e) {
+            System.out.println("Erro ao cadastrar: " + e.getMessage());
+        }
+    }
 }

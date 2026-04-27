@@ -8,16 +8,18 @@ package br.edu.tds.telalogin;
  *
  * @author douglas
  */
+public class Usuario {
 
-public class Usuario{
-    
     private int id;
     private String nomeCompleto;
     private String nomeUsuario;
     private String email;
     private String senha;
     private String cpf;
-   
+
+    public Usuario() {
+    }
+
     public Usuario(String nomeCompleto, String nomeUsuario, String email, String senha, String cpf) {
         this.nomeCompleto = nomeCompleto;
         this.nomeUsuario = nomeUsuario;
@@ -25,7 +27,6 @@ public class Usuario{
         this.senha = senha;
         this.cpf = cpf;
     }
-    
 
     public int getId() {
         return id;
@@ -73,5 +74,5 @@ public class Usuario{
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }    
+    }
 }
