@@ -2,9 +2,13 @@ package br.edu.tds.telalogin;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class TelaLoginController {
 
@@ -19,7 +23,15 @@ public class TelaLoginController {
 
     @FXML
     private void abrirTelaCadastroUsuario() throws IOException {
-        App.setRoot("telaCadastroUsuario");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/tds/telalogin/telaCadastroUsuario.fxml"));
+
+        Parent root = loader.load();
+
+        TelaCadastroUsuarioController controller = loader.getController();
+
+        //Trocando de tela 
+        Stage stage = (Stage) txtUsuario.getScene().getWindow();
+        stage.setScene(new Scene(root));
     }
 
     @FXML
@@ -58,7 +70,15 @@ public class TelaLoginController {
         if (login) {
             //Login com sucesso
             System.out.println("Login feito");
-            App.setRoot("telaGerenciamentoUsuarios");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/tds/telalogin/telaGerenciamentoUsuarios.fxml"));
+
+            Parent root = loader.load();
+
+            TelaGerenciamentoUsuariosController controller = loader.getController();
+
+            //Trocando de tela
+            Stage stage = (Stage) txtUsuario.getScene().getWindow();
+            stage.setScene(new Scene(root));
         } else {
             //Falha no login (usuário ou senha inválido)
             lblUsuario.setText("Usuário/Senha incorreto(a)");

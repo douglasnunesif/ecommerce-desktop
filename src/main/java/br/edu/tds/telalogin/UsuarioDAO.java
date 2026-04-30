@@ -33,6 +33,8 @@ public class UsuarioDAO {
 
     //Testa o login de usuário
     public boolean login(String email, String senha) {
+        System.out.println("email: " + email);
+        System.out.println("senha: " + senha);
         String sql = "SELECT * FROM usuarios WHERE email = ? AND senha = ?";
         try (Connection conn = Conexao.conectar(); PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, email);

@@ -63,7 +63,15 @@ public class TelaGerenciamentoUsuariosController implements Initializable {
 
     @FXML
     private void abrirTelaCadastroUsuario() throws IOException {
-        App.setRoot("telaCadastroUsuario");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/tds/telalogin/telaCadastroUsuario.fxml"));
+
+        Parent root = loader.load();
+
+        TelaCadastroUsuarioController controller = loader.getController();
+
+        //Trocando de tela
+        Stage stage = (Stage) tabelaUsuarios.getScene().getWindow();
+        stage.setScene(new Scene(root));
     }
 
     private void carregarUsuarios() {

@@ -8,12 +8,17 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -46,23 +51,31 @@ public class TelaCadastroUsuarioController implements Initializable {
 
     @FXML
     private void abrirTelaLogin() throws IOException {
-        App.setRoot("telaLogin");
+        System.out.println("Entrou no método login");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/tds/telalogin/telaLogin.fxml"));
+
+        Parent root = loader.load();
+
+        TelaLoginController controller = loader.getController();
+
+        //Trocando de tela
+        Stage stage = (Stage) txtNomeCompleto.getScene().getWindow();
+        stage.setScene(new Scene(root));
     }
 
     @FXML
-    private void cadastrarUsuario() {
-        
-        if(usuarioEdicao == null){
+    private void cadastrarUsuario() throws IOException {
+
+        if (usuarioEdicao == null) {
             inserirUsuario();
-        }
-        else{
+        } else {
             atualizarUsuario();
         }
-        
+
     }
 
     @FXML
-    private void inserirUsuario() {
+    private void inserirUsuario() throws IOException {
 
         String nomeCompleto = txtNomeCompleto.getText();
         String nomeUsuario = txtNomeUsuario.getText();
@@ -97,12 +110,23 @@ public class TelaCadastroUsuarioController implements Initializable {
             UsuarioDAO dao = new UsuarioDAO();
             Usuario u = new Usuario(nomeCompleto, nomeUsuario, email, senha, cpf);
             dao.cadastrar(u);
+            mostrarAlerta("O cadastro de " + u.getNomeCompleto() + " foi cadastrado com sucesso");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/tds/telalogin/telaGerenciamentoUsuarios.fxml"));
+
+            Parent root = loader.load();
+
+            TelaGerenciamentoUsuariosController controller = loader.getController();
+
+            //Trocando de tela
+            Stage stage = (Stage) txtNomeCompleto.getScene().getWindow();
+            stage.setScene(new Scene(root));
+
         }
 
     }
-    
+
     @FXML
-    private void atualizarUsuario() {
+    private void atualizarUsuario() throws IOException {
 
         String nomeCompleto = txtNomeCompleto.getText();
         String nomeUsuario = txtNomeUsuario.getText();
@@ -137,6 +161,16 @@ public class TelaCadastroUsuarioController implements Initializable {
             UsuarioDAO dao = new UsuarioDAO();
             Usuario u = new Usuario(nomeCompleto, nomeUsuario, email, senha, cpf);
             dao.atualizar(u);
+            mostrarAlerta("O cadastro de " + u.getNomeCompleto() + " foi atualizado com sucesso");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/tds/telalogin/telaGerenciamentoUsuarios.fxml"));
+
+            Parent root = loader.load();
+
+            TelaGerenciamentoUsuariosController controller = loader.getController();
+
+            //Trocando de tela
+            Stage stage = (Stage) txtNomeCompleto.getScene().getWindow();
+            stage.setScene(new Scene(root));
         }
 
     }
@@ -154,6 +188,15 @@ public class TelaCadastroUsuarioController implements Initializable {
 
         lblTelaEditarUsuario.setText("Atualizar conta de usuário");
         btnCadastrar.setText("Salvar");
+    }
+
+    private void mostrarAlerta(String msg) {
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Sistema");
+        alert.setHeaderText(null);
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
 
 }
