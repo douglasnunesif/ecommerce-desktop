@@ -1,4 +1,4 @@
-package br.edu.tds.telalogin;
+package br.edu.tds.ecommerce;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
@@ -23,7 +23,7 @@ public class TelaLoginController {
 
     @FXML
     private void abrirTelaCadastroUsuario() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/tds/telalogin/telaCadastroUsuario.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/tds/ecommerce/telaCadastroUsuario.fxml"));
 
         Parent root = loader.load();
 
@@ -70,7 +70,7 @@ public class TelaLoginController {
         if (login) {
             //Login com sucesso
             System.out.println("Login feito");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/tds/telalogin/telaGerenciamentoUsuarios.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/tds/ecommerce/telaGerenciamentoUsuarios.fxml"));
 
             Parent root = loader.load();
 

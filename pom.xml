@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>br.edu.tds</groupId>
-    <artifactId>TelaLogin</artifactId>
+    <artifactId>Ecommerce</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -55,7 +55,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.4</version>
                 <configuration>
-                    <mainClass>br.edu.tds.telalogin.App</mainClass>
+                    <mainClass>br.edu.tds.ecommerce.App</mainClass>
                 </configuration>
                 <executions>
                     <execution>
@@ -99,4 +99,5 @@
             </plugin>
         </plugins>
     </build>
+    <name>Ecommerce</name>
 </project>

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
-package br.edu.tds.telalogin;
+package br.edu.tds.ecommerce;
 
 import java.io.IOException;
 import java.net.URL;
@@ -52,7 +52,7 @@ public class TelaCadastroUsuarioController implements Initializable {
     @FXML
     private void abrirTelaLogin() throws IOException {
         System.out.println("Entrou no método login");
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/tds/telalogin/telaLogin.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/tds/ecommerce/telaLogin.fxml"));
 
         Parent root = loader.load();
 
@@ -111,7 +111,7 @@ public class TelaCadastroUsuarioController implements Initializable {
             Usuario u = new Usuario(nomeCompleto, nomeUsuario, email, senha, cpf);
             dao.cadastrar(u);
             mostrarAlerta("O cadastro de " + u.getNomeCompleto() + " foi cadastrado com sucesso");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/tds/telalogin/telaGerenciamentoUsuarios.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/tds/ecommerce/telaGerenciamentoUsuarios.fxml"));
 
             Parent root = loader.load();
 
@@ -160,9 +160,14 @@ public class TelaCadastroUsuarioController implements Initializable {
             //Atualizando um usuário no BD
             UsuarioDAO dao = new UsuarioDAO();
             Usuario u = new Usuario(nomeCompleto, nomeUsuario, email, senha, cpf);
+            System.out.println("Nome: " + u.getNomeCompleto());
+            System.out.println("Usuario: " + u.getNomeUsuario());
+            System.out.println("Email: " + u.getEmail());
+            System.out.println("Senha: " + u.getSenha());
+            System.out.println("CPF: " + u.getCpf());
             dao.atualizar(u);
             mostrarAlerta("O cadastro de " + u.getNomeCompleto() + " foi atualizado com sucesso");
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/tds/telalogin/telaGerenciamentoUsuarios.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/tds/ecommerce/telaGerenciamentoUsuarios.fxml"));
 
             Parent root = loader.load();
 

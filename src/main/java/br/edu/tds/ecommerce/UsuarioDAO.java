@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.edu.tds.telalogin;
+package br.edu.tds.ecommerce;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -49,15 +49,20 @@ public class UsuarioDAO {
 
     void atualizar(Usuario u) {
         String sql = "UPDATE usuarios SET nomeCompleto=?, nomeUsuario=?, email=?, senha=?, cpf=? WHERE nomeUsuario=?";
-        try (Connection conn = Conexao.conectar()) {
-            PreparedStatement stmt = conn.prepareCall(sql);
+        try (Connection conn = Conexao.conectar();PreparedStatement stmt = conn.prepareCall(sql)){
+            System.out.println("daoNome: " + u.getNomeCompleto());
+            System.out.println("daoUsuario: " + u.getNomeUsuario());
+            System.out.println("daoEmail: " + u.getEmail());
+            System.out.println("daoSenha: " + u.getSenha());
+            System.out.println("daoCPF: " + u.getCpf());
+            
             stmt.setString(1, u.getNomeCompleto());
             stmt.setString(2, u.getNomeUsuario());
             stmt.setString(3, u.getEmail());
             stmt.setString(4, u.getSenha());
             stmt.setString(5, u.getCpf());
             stmt.setString(6, u.getNomeUsuario());
-            stmt.executeUpdate();
+            System.out.println(stmt.executeUpdate());
             System.out.println("Usuário " + u.getNomeCompleto() + " foi atualizado com sucesso!");
         } catch (Exception e) {
             System.out.println("Erro ao cadastrar: " + e.getMessage());
