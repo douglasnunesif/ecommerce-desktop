@@ -1,5 +1,22 @@
 #!/bin/bash
 
+set -euo pipefail
+
+echo "=================================================="
+echo " AJUSTANDO O RELÓGIO DO PC"
+echo "=================================================="
+
+
+echo "Sincronizando relógio..."
+
+sudo timedatectl set-ntp true
+
+sleep 10
+
+timedatectl status
+
+date
+
 # ==================================================
 # REMOÇÃO COMPLETA DE AMBIENTES ANTIGOS
 # ==================================================
@@ -33,7 +50,7 @@ sudo apt purge -y \
     openjfx* \
     libopenjfx* \
     default-mysql-server \
-    default-mysql-client
+    default-mysql-client || true
 
 # --------------------------------------------------
 # REMOVER DEPENDÊNCIAS ÓRFÃS
@@ -70,6 +87,9 @@ rm -rf ~/Projetos/JavaFXTemplate
 
 echo "Removendo dados antigos do MySQL..."
 
+sudo apt purge -y mysql-server mysql-client mysql-common
+sudo apt autoremove -y
+
 sudo rm -rf /etc/mysql
 sudo rm -rf /var/lib/mysql
 sudo rm -rf /var/log/mysql
@@ -88,21 +108,20 @@ sudo apt update
 
 echo "=================================================="
 echo " LIMPEZA FINALIZADA"
-echo "==================================================\n"
+echo "=================================================="
 
-echo "\n"
+echo ""
 
-echo "\n=================================================="
+echo "=================================================="
 echo " INSTALANDO WGET CURL UNZIP TAR GIT"
-echo "==================================================\n"
+echo "=================================================="
 
 sudo apt install -y wget curl unzip tar git
 
-set -e
 
-echo "\n=================================================="
+echo "=================================================="
 echo " INSTALANDO AMBIENTE JAVA + JAVAFX COMPLETO"
-echo "==================================================\n"
+echo "=================================================="
 
 # ==================================================
 # ATUALIZAÇÃO DO SISTEMA
@@ -134,36 +153,39 @@ mvn -version
 # INSTALAR MYSQL SERVER + WORKBENCH
 # ==================================================
 
+
 echo "Instalando MySQL Server..."
+
+sudo apt update
 
 sudo apt install -y mysql-server
 
+sleep 10
 sudo systemctl enable mysql
-sudo systemctl start mysql
+sudo systemctl restart mysql
 
 echo "Configurando autenticação do MySQL..."
 
 # Aguarda inicialização completa
-sleep 5
+
 
 # Configura senha do root e autenticação por senha
-sudo mysql <<EOF
+sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'ifsuldeminas'; FLUSH PRIVILEGES;"
 
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'ifsudeminas';
+echo "Testando acesso MySQL..."
 
-FLUSH PRIVILEGES;
-
-EOF
-
-#echo "Testando acesso MySQL..."
-
-mysql -u root -pifsuldeminas -e "SELECT VERSION();"
+mysql -u root -p'ifsuldeminas' -e "SELECT VERSION();"
 
 echo "MySQL configurado com sucesso!"
 
 
 echo "Baixando MySQL Workbench..."
 
+# ==================================================
+# CRIAR DIRETORIO TEMPORARIO
+# ==================================================
+
+mkdir -p ~/Downloads/javafx-setup
 cd ~/Downloads/javafx-setup
 
 WORKBENCH_URL="https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community_8.0.47-1ubuntu24.04_amd64.deb"
@@ -180,13 +202,6 @@ echo "Instalando MySQL Workbench..."
 sudo dpkg -i mysql-workbench.deb || sudo apt --fix-broken install -y
 
 echo "MySQL Workbench instalado!"
-
-# ==================================================
-# CRIAR DIRETORIO TEMPORARIO
-# ==================================================
-
-mkdir -p ~/Downloads/javafx-setup
-cd ~/Downloads/javafx-setup
 
 # ==================================================
 # BAIXAR NETBEANS MAIS RECENTE
@@ -231,7 +246,7 @@ wget -O javafx.tar.gz $JAVAFX_URL
 
 tar -xzf javafx.tar.gz
 
-JAVAFX_DIR=$(find . -maxdepth 1 -type d | grep zulu25.34.17)
+JAVAFX_DIR=$(find . -maxdepth 1 -type d -name "zulu*" | head -n 1)
 
 sudo mv $JAVAFX_DIR /opt/javafx-sdk
 
@@ -241,7 +256,7 @@ sudo mv $JAVAFX_DIR /opt/javafx-sdk
 
 echo "Baixando Scene Builder..."
 
-SCENE_BUILDER_URL="https://gluonhq.com/products/scene-builder/thanks/?dl=https://download2.gluonhq.com/scenebuilder/26.0.0/install/linux/SceneBuilder-26.0.0.deb"
+SCENE_BUILDER_URL="https://download2.gluonhq.com/scenebuilder/26.0.0/install/linux/SceneBuilder-26.0.0.deb"
 
 wget -O scenebuilder.deb $SCENE_BUILDER_URL
 
@@ -415,6 +430,9 @@ mvn clean install
 echo "=================================================="
 echo " INSTALAÇÃO FINALIZADA!"
 echo "=================================================="
+
+java -version
+mvn -version
 
 echo ""
 echo "Próximos passos:"
