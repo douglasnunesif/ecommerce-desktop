@@ -6,7 +6,13 @@ package br.edu.tds.ecommerce;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
@@ -15,12 +21,37 @@ import javafx.fxml.Initializable;
  */
 public class TelaCadastroProdutosController implements Initializable {
 
+    @FXML
+    private TextField txtNome;
+    
+    @FXML
+    private ComboBox<String> cbCategoria;
+    
+    @FXML
+    private TextField txtPreco;
+    
+    @FXML
+    private TextField txtQuantidade;
+    
+    @FXML
+    private TextField txtImagem;
+    
+    @FXML
+    private TextArea txtDescricao;
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        //cbCategoria.getItems().add(0, "Item 1");
+        //cbCategoria.getItems().add(1, "Item 2");
+        
+        //cbCategoria.getItems().addAll("Eletrônio","Informática");
+        
+        ObservableList<String> opcoes = FXCollections.observableArrayList("Item 1", "Item 2");
+        cbCategoria.setItems(opcoes);
     }    
     
 }

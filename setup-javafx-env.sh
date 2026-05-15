@@ -1,10 +1,108 @@
 #!/bin/bash
 
-set -e
+# ==================================================
+# REMOÇÃO COMPLETA DE AMBIENTES ANTIGOS
+# ==================================================
 
 echo "=================================================="
-echo " INSTALANDO AMBIENTE JAVA + JAVAFX COMPLETO"
+echo " REMOVENDO INSTALAÇÕES ANTIGAS"
 echo "=================================================="
+
+# --------------------------------------------------
+# PARAR SERVIÇOS
+# --------------------------------------------------
+
+sudo systemctl stop mysql || true
+
+# --------------------------------------------------
+# REMOVER PACOTES
+# --------------------------------------------------
+
+echo "Removendo pacotes antigos..."
+
+sudo apt purge -y \
+    openjdk-* \
+    default-jdk \
+    maven \
+    mysql-server \
+    mysql-client \
+    mysql-common \
+    mysql-workbench* \
+    netbeans* \
+    scenebuilder* \
+    openjfx* \
+    libopenjfx* \
+    default-mysql-server \
+    default-mysql-client
+
+# --------------------------------------------------
+# REMOVER DEPENDÊNCIAS ÓRFÃS
+# --------------------------------------------------
+
+sudo apt autoremove -y
+sudo apt autoclean -y
+
+# --------------------------------------------------
+# REMOVER DIRETÓRIOS EM /OPT
+# --------------------------------------------------
+
+echo "Removendo diretórios antigos..."
+
+sudo rm -rf /opt/netbeans*
+sudo rm -rf /opt/javafx*
+sudo rm -rf /opt/scenebuilder*
+sudo rm -rf /opt/SceneBuilder*
+
+# --------------------------------------------------
+# REMOVER CONFIGURAÇÕES DO USUÁRIO
+# --------------------------------------------------
+
+echo "Removendo configurações antigas..."
+
+rm -rf ~/.netbeans
+rm -rf ~/.m2
+rm -rf ~/SceneBuilder-Ikonli
+rm -rf ~/Projetos/JavaFXTemplate
+
+# --------------------------------------------------
+# REMOVER MYSQL COMPLETAMENTE
+# --------------------------------------------------
+
+echo "Removendo dados antigos do MySQL..."
+
+sudo rm -rf /etc/mysql
+sudo rm -rf /var/lib/mysql
+sudo rm -rf /var/log/mysql
+
+# --------------------------------------------------
+# REMOVER ARQUIVOS TEMPORÁRIOS
+# --------------------------------------------------
+
+rm -rf ~/Downloads/javafx-setup
+
+# --------------------------------------------------
+# ATUALIZAR REPOSITÓRIOS
+# --------------------------------------------------
+
+sudo apt update
+
+echo "=================================================="
+echo " LIMPEZA FINALIZADA"
+echo "==================================================\n"
+
+echo "\n"
+
+echo "\n=================================================="
+echo " INSTALANDO WGET CURL UNZIP TAR GIT"
+echo "==================================================\n"
+
+sudo apt install -y wget curl unzip tar git
+
+set -e
+
+echo "\n=================================================="
+echo " INSTALANDO AMBIENTE JAVA + JAVAFX COMPLETO"
+echo "==================================================\n"
 
 # ==================================================
 # ATUALIZAÇÃO DO SISTEMA
@@ -198,7 +296,7 @@ cat > pom.xml <<EOF
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
-        <javafx.version>21</javafx.version>
+        <javafx.version>25</javafx.version>
     </properties>
 
     <dependencies>
@@ -326,7 +424,7 @@ echo "2) Ir em:"
 echo "   Library -> JAR/FXML Manager"
 echo ""
 echo "3) Adicionar os JARs das 3 pastas:"
-echo "   ~/.m2/repository/org/kordamp/ikonli
+echo "   ~/.m2/repository/org/kordamp/ikonli"
 echo ""
 echo "4) Reiniciar o Scene Builder"
 echo ""
