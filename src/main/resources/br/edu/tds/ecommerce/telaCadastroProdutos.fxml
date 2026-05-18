@@ -50,7 +50,7 @@
             <TextField fx:id="txtImagem" layoutX="71.0" layoutY="306.0" prefHeight="29.0" prefWidth="342.0" promptText="URL da imagem" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0 0 3 0;" />
             <FontIcon iconColor="#0598ff" iconLiteral="fas-image" iconSize="20" layoutX="42.0" layoutY="328.0" />
             <TextArea fx:id="txtDescricao" layoutX="71.0" layoutY="363.0" prefHeight="57.0" prefWidth="344.0" promptText="Descriçao do Produto" style="-fx-control-inner-background: transparent; -fx-border-color: #0598ff; -fx-border-width: 0 0 3 0; -fx-prompt-text-fill: #888888;" />
-            <Button fx:id="btnCadastrar" layoutX="122.0" layoutY="454.0" mnemonicParsing="false" style="-fx-background-color: #0598ff;" text="Cadastrar" textFill="WHITE">
+            <Button fx:id="btnCadastrar" layoutX="122.0" layoutY="454.0" mnemonicParsing="false" onAction="#salvarProduto" style="-fx-background-color: #0598ff;" text="Cadastrar" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>

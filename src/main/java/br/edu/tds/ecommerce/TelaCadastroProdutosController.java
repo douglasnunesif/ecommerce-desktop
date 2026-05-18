@@ -45,13 +45,50 @@ public class TelaCadastroProdutosController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        //cbCategoria.getItems().add(0, "Item 1");
-        //cbCategoria.getItems().add(1, "Item 2");
+        cbCategoria.getItems().add(0,"Celulares");
+        cbCategoria.getItems().add(1,"Eletrônicos");
+        cbCategoria.getItems().add(2,"Informática");
+        cbCategoria.getItems().add(3,"Jogos");
+        cbCategoria.getItems().add(4,"Livros");
+        cbCategoria.getItems().add(5,"Roupas");
+        
         
         //cbCategoria.getItems().addAll("Eletrônio","Informática");
         
-        ObservableList<String> opcoes = FXCollections.observableArrayList("Item 1", "Item 2");
-        cbCategoria.setItems(opcoes);
+        //ObservableList<String> opcoes = FXCollections.observableArrayList("Item 1", "Item 2");
+        //cbCategoria.setItems(opcoes);
     }    
+    
+    private boolean validarCampos(){
+        
+        if(txtNome.getText().isEmpty()){
+          txtNome.setStyle("-fx-background-color: transparent; -fx-border-color: red; -fx-border-width: 0 0 3 0;");  
+        }
+        
+        if(txtPreco.getText().isEmpty()){
+          txtPreco.setStyle("-fx-background-color: transparent; -fx-border-color: red; -fx-border-width: 0 0 3 0;");    
+        }
+        
+        if(txtQuantidade.getText().isEmpty()){
+          txtQuantidade.setStyle("-fx-background-color: transparent; -fx-border-color: red; -fx-border-width: 0 0 3 0;");    
+        }
+        
+        if(txtImagem.getText().isEmpty()){
+          txtImagem.setStyle("-fx-background-color: transparent; -fx-border-color: red; -fx-border-width: 0 0 3 0;");    
+        }
+        
+            
+        return true;
+    }
+    
+    @FXML
+    private void salvarProduto(){
+        
+        txtNome.setStyle("-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0 0 3 0;");
+        txtPreco.setStyle("-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0 0 3 0;");
+        txtQuantidade.setStyle("-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0 0 3 0;");
+        txtImagem.setStyle("-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0 0 3 0;");
+        validarCampos();
+    }
     
 }
