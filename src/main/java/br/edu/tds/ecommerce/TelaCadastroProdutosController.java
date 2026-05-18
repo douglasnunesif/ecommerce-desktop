@@ -5,11 +5,13 @@
 package br.edu.tds.ecommerce;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -61,34 +63,69 @@ public class TelaCadastroProdutosController implements Initializable {
     
     private boolean validarCampos(){
         
+        boolean validado = true;
+        
         if(txtNome.getText().isEmpty()){
-          txtNome.setStyle("-fx-background-color: transparent; -fx-border-color: red; -fx-border-width: 0 0 3 0;");  
+          txtNome.setStyle("-fx-background-color: transparent; -fx-border-color: red; -fx-border-width: 0 0 3 0;");
+          validado = false;
         }
         
         if(txtPreco.getText().isEmpty()){
           txtPreco.setStyle("-fx-background-color: transparent; -fx-border-color: red; -fx-border-width: 0 0 3 0;");    
+          validado = false;
         }
         
         if(txtQuantidade.getText().isEmpty()){
           txtQuantidade.setStyle("-fx-background-color: transparent; -fx-border-color: red; -fx-border-width: 0 0 3 0;");    
+          validado = false;
         }
         
         if(txtImagem.getText().isEmpty()){
           txtImagem.setStyle("-fx-background-color: transparent; -fx-border-color: red; -fx-border-width: 0 0 3 0;");    
+          validado = false;
         }
         
-            
-        return true;
+        return validado;
     }
     
     @FXML
-    private void salvarProduto(){
+    private void salvarProduto() throws SQLException{
         
         txtNome.setStyle("-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0 0 3 0;");
         txtPreco.setStyle("-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0 0 3 0;");
         txtQuantidade.setStyle("-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0 0 3 0;");
         txtImagem.setStyle("-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0 0 3 0;");
-        validarCampos();
+        
+        boolean status = validarCampos();
+        
+        if(status){
+            //salvo os dados do produto no banco de dados
+            //mostrarAlerta("Formulário Validado");
+            
+            Produto p = new Produto();
+            p.setNome(txtNome.getText());
+            p.setCategoria(cbCategoria.getValue());
+            p.setPreco(Double.parseDouble(txtPreco.getText()));
+            p.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
+            p.setImagem(txtImagem.getText());
+            p.setDescricao(txtDescricao.getText());
+            
+            ProdutoDAO dao = new ProdutoDAO();
+            dao.cadastrarProduto(p);
+            mostrarAlerta("Produto cadastrado com sucesso!");
+            
+        }else{
+            //corrigir informações do formulário
+            mostrarAlerta("Todos os campos são obrigatórios");
+        }
+    }
+    
+    private void mostrarAlerta(String msg) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Sistema");
+        alert.setHeaderText(null);
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
     
 }
