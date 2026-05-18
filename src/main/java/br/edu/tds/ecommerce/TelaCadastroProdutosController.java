@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -40,6 +41,9 @@ public class TelaCadastroProdutosController implements Initializable {
     
     @FXML
     private TextArea txtDescricao;
+    
+    @FXML
+    private CheckBox cAtivo;
     
     /**
      * Initializes the controller class.
@@ -109,6 +113,7 @@ public class TelaCadastroProdutosController implements Initializable {
             p.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
             p.setImagem(txtImagem.getText());
             p.setDescricao(txtDescricao.getText());
+            p.setAtivo(cAtivo.isSelected());
             
             ProdutoDAO dao = new ProdutoDAO();
             dao.cadastrarProduto(p);
