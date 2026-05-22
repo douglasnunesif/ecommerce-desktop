@@ -90,6 +90,7 @@ public class TelaGerenciamentoUsuariosController implements Initializable {
                 u.setEmail(rs.getString("email"));
                 u.setCpf(rs.getString("cpf"));
                 u.setSenha(rs.getString("senha"));
+                u.setRole(rs.getString("role"));
 
                 listaUsuarios.add(u);
             }

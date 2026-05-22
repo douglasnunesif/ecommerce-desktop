@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -38,6 +39,8 @@ public class TelaCadastroUsuarioController implements Initializable {
     @FXML
     private TextField txtCPF;
     @FXML
+    private ComboBox<String> cbRole;
+    @FXML
     private Text lblTelaEditarUsuario;
     @FXML
     private Button btnCadastrar;
@@ -47,6 +50,8 @@ public class TelaCadastroUsuarioController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        cbRole.getItems().add(0, "cliente");
+        cbRole.getItems().add(1, "admin");
     }
 
     @FXML
@@ -82,6 +87,8 @@ public class TelaCadastroUsuarioController implements Initializable {
         String senha = txtSenha.getText();
         String email = txtEmail.getText();
         String cpf = txtCPF.getText();
+        String role = cbRole.getValue();
+        
 
         txtNomeCompleto.setStyle("-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0 0 3 0;");
         txtNomeUsuario.setStyle("-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0 0 3 0;");
@@ -108,7 +115,7 @@ public class TelaCadastroUsuarioController implements Initializable {
         if (!(nomeCompleto.isEmpty() || nomeUsuario.isEmpty() || senha.isEmpty() || email.isEmpty() || cpf.isEmpty())) {
             //Cadastrando um usuário no BD
             UsuarioDAO dao = new UsuarioDAO();
-            Usuario u = new Usuario(nomeCompleto, nomeUsuario, email, senha, cpf);
+            Usuario u = new Usuario(nomeCompleto, nomeUsuario, email, senha, cpf, role);
             dao.cadastrar(u);
             mostrarAlerta("O cadastro de " + u.getNomeCompleto() + " foi cadastrado com sucesso");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/tds/ecommerce/telaGerenciamentoUsuarios.fxml"));
@@ -133,6 +140,7 @@ public class TelaCadastroUsuarioController implements Initializable {
         String senha = txtSenha.getText();
         String email = txtEmail.getText();
         String cpf = txtCPF.getText();
+        String role = cbRole.getValue();
 
         txtNomeCompleto.setStyle("-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0 0 3 0;");
         txtNomeUsuario.setStyle("-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0 0 3 0;");
@@ -159,7 +167,7 @@ public class TelaCadastroUsuarioController implements Initializable {
         if (!(nomeCompleto.isEmpty() || nomeUsuario.isEmpty() || senha.isEmpty() || email.isEmpty() || cpf.isEmpty())) {
             //Atualizando um usuário no BD
             UsuarioDAO dao = new UsuarioDAO();
-            Usuario u = new Usuario(nomeCompleto, nomeUsuario, email, senha, cpf);
+            Usuario u = new Usuario(nomeCompleto, nomeUsuario, email, senha, cpf, role);
             System.out.println("Nome: " + u.getNomeCompleto());
             System.out.println("Usuario: " + u.getNomeUsuario());
             System.out.println("Email: " + u.getEmail());
@@ -190,6 +198,7 @@ public class TelaCadastroUsuarioController implements Initializable {
         txtSenha.setText(u.getSenha());
         txtEmail.setText(u.getEmail());
         txtCPF.setText(u.getCpf());
+        cbRole.setValue(u.getRole());
 
         lblTelaEditarUsuario.setText("Atualizar conta de usuário");
         btnCadastrar.setText("Salvar");
