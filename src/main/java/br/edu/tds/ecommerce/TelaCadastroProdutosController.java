@@ -45,6 +45,8 @@ public class TelaCadastroProdutosController implements Initializable {
     @FXML
     private CheckBox cAtivo;
     
+    private Produto produtoEdicao;
+    
     /**
      * Initializes the controller class.
      */
@@ -123,6 +125,18 @@ public class TelaCadastroProdutosController implements Initializable {
             //corrigir informações do formulário
             mostrarAlerta("Todos os campos são obrigatórios");
         }
+    }
+    
+    public void setProduto(Produto p){
+        produtoEdicao = p;
+        
+        txtNome.setText(produtoEdicao.getNome());
+        cbCategoria.setValue(produtoEdicao.getCategoria());
+        txtPreco.setText(String.valueOf(produtoEdicao.getPreco()));
+        txtQuantidade.setText(String.valueOf(produtoEdicao.getQuantidade()));
+        txtImagem.setText(produtoEdicao.getImagem());
+        txtDescricao.setText(produtoEdicao.getDescricao());
+        cAtivo.setSelected(produtoEdicao.isAtivo());
     }
     
     private void mostrarAlerta(String msg) {
