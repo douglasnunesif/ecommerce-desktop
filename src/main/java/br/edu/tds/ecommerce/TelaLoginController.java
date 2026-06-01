@@ -79,6 +79,8 @@ public class TelaLoginController {
             //Trocando de tela
             Stage stage = (Stage) txtUsuario.getScene().getWindow();
             stage.setScene(new Scene(root));
+            
+            
         } else {
             //Falha no login (usuário ou senha inválido)
             lblUsuario.setText("Usuário/Senha incorreto(a)");
