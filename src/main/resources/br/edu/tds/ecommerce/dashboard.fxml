@@ -7,14 +7,7 @@
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane
-    fx:id="painelPrincipal"
-    prefHeight="900.0"
-    prefWidth="1600.0"
-    stylesheets="@css/dashboard.css"
-    xmlns="http://javafx.com/javafx/25"
-    xmlns:fx="http://javafx.com/fxml/1"
-    fx:controller="br.edu.tds.ecommerce.DashboardController">
+<BorderPane fx:id="painelPrincipal" prefHeight="900.0" prefWidth="1600.0" stylesheets="@css/dashboard.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.tds.ecommerce.DashboardController">
 
     <!-- SIDEBAR -->
 
@@ -26,18 +19,9 @@
 
                 <!-- LOGO -->
 
-                <FontIcon
-                    iconLiteral="fas-store"
-                    iconColor="WHITE"
-                    iconSize="75"
-                    layoutX="95"
-                    layoutY="100" />
+                <FontIcon iconColor="WHITE" iconLiteral="fas-store" iconSize="75" layoutX="95" layoutY="100" />
 
-                <Text
-                    fill="WHITE"
-                    layoutX="45"
-                    layoutY="170"
-                    text="Dashboard">
+                <Text fill="WHITE" layoutX="45" layoutY="170" text="Dashboard">
 
                     <font>
                         <Font size="30" />
@@ -47,124 +31,61 @@
 
                 <!-- MENU -->
 
-                <Button
-                    layoutX="20"
-                    layoutY="240"
-                    prefWidth="230"
-                    onAction="#abrirUsuarios"
-                    styleClass="menu-button"
-                    text="Usuários">
+                <Button layoutX="20" layoutY="240" onAction="#abrirUsuarios" prefWidth="230" styleClass="menu-button" text="Usuários">
 
                     <graphic>
-                        <FontIcon
-                            iconLiteral="fas-users"
-                            iconColor="WHITE"
-                            iconSize="20" />
+                        <FontIcon iconColor="WHITE" iconLiteral="fas-users" iconSize="20" />
                     </graphic>
 
                 </Button>
 
-                <Button
-                    layoutX="20"
-                    layoutY="300"
-                    prefWidth="230"
-                    onAction="#abrirProdutos"
-                    styleClass="menu-button"
-                    text="Produtos">
+                <Button layoutX="20" layoutY="300" onAction="#abrirProdutos" prefWidth="230" styleClass="menu-button" text="Produtos">
 
                     <graphic>
-                        <FontIcon
-                            iconLiteral="fas-box-open"
-                            iconColor="WHITE"
-                            iconSize="20" />
+                        <FontIcon iconColor="WHITE" iconLiteral="fas-box-open" iconSize="20" />
                     </graphic>
 
                 </Button>
 
-                <Button
-                    layoutX="20"
-                    layoutY="360"
-                    prefWidth="230"
-                    onAction="#abrirFornecedores"
-                    styleClass="menu-button"
-                    text="Fornecedores">
+                <Button layoutX="20" layoutY="360" onAction="#abrirFornecedores" prefWidth="230" styleClass="menu-button" text="Fornecedores">
 
                     <graphic>
-                        <FontIcon
-                            iconLiteral="fas-truck"
-                            iconColor="WHITE"
-                            iconSize="20" />
+                        <FontIcon iconColor="WHITE" iconLiteral="fas-truck" iconSize="20" />
                     </graphic>
 
                 </Button>
 
-                <Button
-                    layoutX="20"
-                    layoutY="420"
-                    prefWidth="230"
-                    onAction="#abrirVendas"
-                    styleClass="menu-button"
-                    text="Vendas">
+                <Button layoutX="20" layoutY="420" onAction="#abrirVendas" prefWidth="230" styleClass="menu-button" text="Vendas">
 
                     <graphic>
-                        <FontIcon
-                            iconLiteral="fas-shopping-cart"
-                            iconColor="WHITE"
-                            iconSize="20" />
+                        <FontIcon iconColor="WHITE" iconLiteral="fas-shopping-cart" iconSize="20" />
                     </graphic>
 
                 </Button>
 
-                <Button
-                    layoutX="20"
-                    layoutY="480"
-                    prefWidth="230"
-                    onAction="#abrirFinanceiro"
-                    styleClass="menu-button"
-                    text="Financeiro">
+                <Button layoutX="20" layoutY="480" onAction="#abrirFinanceiro" prefWidth="230" styleClass="menu-button" text="Financeiro">
 
                     <graphic>
-                        <FontIcon
-                            iconLiteral="fas-dollar-sign"
-                            iconColor="WHITE"
-                            iconSize="20" />
+                        <FontIcon iconColor="WHITE" iconLiteral="fas-dollar-sign" iconSize="20" />
                     </graphic>
 
                 </Button>
 
-                <Button
-                    layoutX="20"
-                    layoutY="540"
-                    prefWidth="230"
-                    onAction="#abrirRelatorios"
-                    styleClass="menu-button"
-                    text="Relatórios">
+                <Button layoutX="20" layoutY="540" onAction="#abrirRelatorios" prefWidth="230" styleClass="menu-button" text="Relatórios">
 
                     <graphic>
-                        <FontIcon
-                            iconLiteral="fas-chart-line"
-                            iconColor="WHITE"
-                            iconSize="20" />
+                        <FontIcon iconColor="WHITE" iconLiteral="fas-chart-line" iconSize="20" />
                     </graphic>
 
                 </Button>
 
                 <!-- BOTÃO LOGOUT -->
 
-                <Button
-                    layoutX="40"
-                    layoutY="780"
-                    prefWidth="190"
-                    onAction="#logout"
-                    styleClass="logout-button"
-                    text="Logout">
+                <Button layoutX="40" layoutY="780" onAction="#logout" prefWidth="190" styleClass="logout-button" text="Logout">
 
                     <graphic>
 
-                        <FontIcon
-                            iconLiteral="fas-sign-out-alt"
-                            iconColor="WHITE"
-                            iconSize="20" />
+                        <FontIcon iconColor="WHITE" iconLiteral="fas-sign-out-alt" iconSize="20" />
 
                     </graphic>
 
@@ -190,34 +111,15 @@
                 <!-- CARD USUÁRIOS -->
                 <!-- ===================================================== -->
 
-                <AnchorPane
-                    layoutX="40"
-                    layoutY="40"
-                    prefWidth="360"
-                    prefHeight="300"
-                    styleClass="card"
-                    onMouseClicked="#abrirUsuarios">
+                <AnchorPane layoutX="40" layoutY="40" onMouseClicked="#abrirUsuarios" prefHeight="300.0" prefWidth="360.0" styleClass="card">
 
                     <children>
 
-                        <FontIcon
-                            iconLiteral="fas-users"
-                            iconColor="#0598ff"
-                            iconSize="90"
-                            layoutX="135"
-                            layoutY="110" />
+                        <FontIcon iconColor="#0598ff" iconLiteral="fas-users" iconSize="90" layoutX="135" layoutY="110" />
 
-                        <Text
-                            layoutX="95"
-                            layoutY="190"
-                            styleClass="card-title"
-                            text="Usuários" />
+                        <Text layoutX="95" layoutY="190" styleClass="card-title" text="Usuários" />
 
-                        <Text
-                            layoutX="50"
-                            layoutY="230"
-                            styleClass="card-subtitle"
-                            text="Gerencie usuários do sistema" />
+                        <Text layoutX="50" layoutY="230" styleClass="card-subtitle" text="Gerencie usuários do sistema" />
 
                     </children>
 
@@ -227,34 +129,15 @@
                 <!-- CARD PRODUTOS -->
                 <!-- ===================================================== -->
 
-                <AnchorPane
-                    layoutX="430"
-                    layoutY="40"
-                    prefWidth="360"
-                    prefHeight="300"
-                    styleClass="card"
-                    onMouseClicked="#abrirProdutos">
+                <AnchorPane layoutX="430" layoutY="40" onMouseClicked="#abrirProdutos" prefHeight="300.0" prefWidth="360.0" styleClass="card">
 
                     <children>
 
-                        <FontIcon
-                            iconLiteral="fas-box-open"
-                            iconColor="#0598ff"
-                            iconSize="90"
-                            layoutX="135"
-                            layoutY="110" />
+                        <FontIcon iconColor="#0598ff" iconLiteral="fas-box-open" iconSize="90" layoutX="135" layoutY="110" />
 
-                        <Text
-                            layoutX="95"
-                            layoutY="190"
-                            styleClass="card-title"
-                            text="Produtos" />
+                        <Text layoutX="95" layoutY="190" styleClass="card-title" text="Produtos" />
 
-                        <Text
-                            layoutX="55"
-                            layoutY="230"
-                            styleClass="card-subtitle"
-                            text="Controle de estoque e catálogo" />
+                        <Text layoutX="55" layoutY="230" styleClass="card-subtitle" text="Controle de estoque e catálogo" />
 
                     </children>
 
@@ -264,34 +147,15 @@
                 <!-- CARD FORNECEDORES -->
                 <!-- ===================================================== -->
 
-                <AnchorPane
-                    layoutX="820"
-                    layoutY="40"
-                    prefWidth="360"
-                    prefHeight="300"
-                    styleClass="card"
-                    onMouseClicked="#abrirFornecedores">
+                <AnchorPane layoutX="820" layoutY="40" onMouseClicked="#abrirFornecedores" prefHeight="300.0" prefWidth="360.0" styleClass="card">
 
                     <children>
 
-                        <FontIcon
-                            iconLiteral="fas-truck"
-                            iconColor="#0598ff"
-                            iconSize="90"
-                            layoutX="135"
-                            layoutY="110" />
+                        <FontIcon iconColor="#0598ff" iconLiteral="fas-truck" iconSize="90" layoutX="135" layoutY="110" />
 
-                        <Text
-                            layoutX="55"
-                            layoutY="190"
-                            styleClass="card-title"
-                            text="Fornecedores" />
+                        <Text layoutX="55" layoutY="190" styleClass="card-title" text="Fornecedores" />
 
-                        <Text
-                            layoutX="55"
-                            layoutY="230"
-                            styleClass="card-subtitle"
-                            text="Controle de fornecedores" />
+                        <Text layoutX="55" layoutY="230" styleClass="card-subtitle" text="Controle de fornecedores" />
 
                     </children>
 
@@ -301,34 +165,15 @@
                 <!-- CARD VENDAS -->
                 <!-- ===================================================== -->
 
-                <AnchorPane
-                    layoutX="40"
-                    layoutY="390"
-                    prefWidth="360"
-                    prefHeight="300"
-                    styleClass="card"
-                    onMouseClicked="#abrirVendas">
+                <AnchorPane layoutX="40" layoutY="390" onMouseClicked="#abrirVendas" prefHeight="300" prefWidth="360" styleClass="card">
 
                     <children>
 
-                        <FontIcon
-                            iconLiteral="fas-shopping-cart"
-                            iconColor="#0598ff"
-                            iconSize="90"
-                            layoutX="125"
-                            layoutY="110" />
+                        <FontIcon iconColor="#0598ff" iconLiteral="fas-shopping-cart" iconSize="90" layoutX="125" layoutY="110" />
 
-                        <Text
-                            layoutX="115"
-                            layoutY="190"
-                            styleClass="card-title"
-                            text="Vendas" />
+                        <Text layoutX="115" layoutY="190" styleClass="card-title" text="Vendas" />
 
-                        <Text
-                            layoutX="60"
-                            layoutY="230"
-                            styleClass="card-subtitle"
-                            text="Gerenciamento de vendas" />
+                        <Text layoutX="60" layoutY="230" styleClass="card-subtitle" text="Gerenciamento de vendas" />
 
                     </children>
 
@@ -338,34 +183,15 @@
                 <!-- CARD FINANCEIRO -->
                 <!-- ===================================================== -->
 
-                <AnchorPane
-                    layoutX="430"
-                    layoutY="390"
-                    prefWidth="360"
-                    prefHeight="300"
-                    styleClass="card"
-                    onMouseClicked="#abrirFinanceiro">
+                <AnchorPane layoutX="430" layoutY="390" onMouseClicked="#abrirFinanceiro" prefHeight="300" prefWidth="360" styleClass="card">
 
                     <children>
 
-                        <FontIcon
-                            iconLiteral="fas-dollar-sign"
-                            iconColor="#0598ff"
-                            iconSize="90"
-                            layoutX="145"
-                            layoutY="110" />
+                        <FontIcon iconColor="#0598ff" iconLiteral="fas-dollar-sign" iconSize="90" layoutX="145" layoutY="110" />
 
-                        <Text
-                            layoutX="85"
-                            layoutY="190"
-                            styleClass="card-title"
-                            text="Financeiro" />
+                        <Text layoutX="85" layoutY="190" styleClass="card-title" text="Financeiro" />
 
-                        <Text
-                            layoutX="55"
-                            layoutY="230"
-                            styleClass="card-subtitle"
-                            text="Controle financeiro geral" />
+                        <Text layoutX="55" layoutY="230" styleClass="card-subtitle" text="Controle financeiro geral" />
 
                     </children>
 
@@ -375,34 +201,15 @@
                 <!-- CARD RELATÓRIOS -->
                 <!-- ===================================================== -->
 
-                <AnchorPane
-                    layoutX="820"
-                    layoutY="390"
-                    prefWidth="360"
-                    prefHeight="300"
-                    styleClass="card"
-                    onMouseClicked="#abrirRelatorios">
+                <AnchorPane layoutX="820" layoutY="390" onMouseClicked="#abrirRelatorios" prefHeight="300" prefWidth="360" styleClass="card">
 
                     <children>
 
-                        <FontIcon
-                            iconLiteral="fas-chart-line"
-                            iconColor="#0598ff"
-                            iconSize="90"
-                            layoutX="135"
-                            layoutY="110" />
+                        <FontIcon iconColor="#0598ff" iconLiteral="fas-chart-line" iconSize="90" layoutX="135" layoutY="110" />
 
-                        <Text
-                            layoutX="70"
-                            layoutY="190"
-                            styleClass="card-title"
-                            text="Relatórios" />
+                        <Text layoutX="70" layoutY="190" styleClass="card-title" text="Relatórios" />
 
-                        <Text
-                            layoutX="50"
-                            layoutY="230"
-                            styleClass="card-subtitle"
-                            text="Estatísticas e relatórios" />
+                        <Text layoutX="50" layoutY="230" styleClass="card-subtitle" text="Estatísticas e relatórios" />
 
                     </children>
 

@@ -69,9 +69,8 @@ public class TelaGerenciamentoUsuariosController implements Initializable {
 
         TelaCadastroUsuarioController controller = loader.getController();
 
-        //Trocando de tela
-        Stage stage = (Stage) tabelaUsuarios.getScene().getWindow();
-        stage.setScene(new Scene(root));
+        
+        
     }
 
     private void carregarUsuarios() {
@@ -99,6 +98,11 @@ public class TelaGerenciamentoUsuariosController implements Initializable {
 
         } catch (Exception e) {
         }
+        
+        //Minimizando a tela
+        //Stage stage = (Stage) tabelaUsuarios.getScene().getWindow();
+        //stage.setMaximized(false);
+        
     }
 
     @FXML

@@ -17,12 +17,36 @@ public class DashboardController {
     private void abrirUsuarios() throws IOException {
 
         System.out.println("Abrir Usuários");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/tds/ecommerce/telaGerenciamentoUsuarios.fxml"));
+
+        Parent root = loader.load();
+
+        TelaGerenciamentoUsuariosController controller = loader.getController();
+
+        //Trocando de tela
+        Stage stage = (Stage) painelPrincipal.getScene().getWindow();
+        stage.setScene(new Scene(root));
+        //stage.setMaximized(false);
+        //stage.show();
+        //stage.setMaxWidth(700);
+        //stage.setMaxHeight(500);
+
     }
 
     @FXML
     private void abrirProdutos() throws IOException {
 
         System.out.println("Abrir Produtos");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/edu/tds/ecommerce/telaGerenciamentoProdutos.fxml"));
+
+        Parent root = loader.load();
+
+        TelaGerenciamentoProdutosController controller = loader.getController();
+
+        //Trocando de tela
+        Stage stage = (Stage) painelPrincipal.getScene().getWindow();
+        stage.setScene(new Scene(root));
+
     }
 
     @FXML
@@ -53,5 +77,7 @@ public class DashboardController {
     private void logout() throws IOException {
 
         System.out.println("logout");
+        Stage stage = (Stage) painelPrincipal.getScene().getWindow();
+        stage.close();
     }
 }
