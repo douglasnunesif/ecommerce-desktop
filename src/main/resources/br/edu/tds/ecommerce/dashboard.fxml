@@ -7,13 +7,13 @@
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<BorderPane fx:id="painelPrincipal" prefHeight="900.0" prefWidth="1600.0" stylesheets="@css/dashboard.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.tds.ecommerce.DashboardController">
+<BorderPane fx:id="painelPrincipal" prefHeight="900.0" prefWidth="1500.0" stylesheets="@css/dashboard.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.tds.ecommerce.DashboardController">
 
     <!-- SIDEBAR -->
 
     <left>
 
-        <AnchorPane prefWidth="280.0" styleClass="sidebar">
+        <AnchorPane minHeight="900.0" minWidth="280.0" prefHeight="900.0" prefWidth="280.0" styleClass="sidebar">
 
             <children>
 
@@ -103,7 +103,7 @@
 
     <center>
 
-        <AnchorPane styleClass="dashboard-background">
+        <AnchorPane minHeight="900.0" minWidth="1220.0" prefHeight="900.0" prefWidth="1220.0" styleClass="dashboard-background">
 
             <children>
 

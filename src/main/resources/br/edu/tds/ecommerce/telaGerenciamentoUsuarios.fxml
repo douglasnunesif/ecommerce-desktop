@@ -10,12 +10,33 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.tds.ecommerce.TelaGerenciamentoUsuariosController">
    <top>
       <HBox alignment="CENTER" prefHeight="57.0" prefWidth="700.0" style="-fx-background-color: #0598ff;" BorderPane.alignment="CENTER">
          <children>
-            <Label alignment="CENTER" prefHeight="43.0" prefWidth="392.0" style="-fx-background-color: #0598ff; -fx-font-size: 20; -fx-font-weight: 800;" text="Gerenciamento de Usuarios" textFill="#fcfcfc" />
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="60.0">
+               <children>
+                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <FontIcon iconColor="WHITE" iconLiteral="fas-arrow-left" iconSize="30" selectionEnd="1" />
+                     </graphic></Button>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="580.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="43.0" prefWidth="392.0" style="-fx-background-color: #0598ff; -fx-font-size: 20; -fx-font-weight: 800;" text="Gerenciamento de Usuarios" textFill="#fcfcfc" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="60.0">
+               <children>
+                  <Button mnemonicParsing="false" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <FontIcon fill="WHITE" iconColor="WHITE" iconLiteral="fas-window-close" iconSize="30" />
+                     </graphic></Button>
+               </children>
+            </HBox>
          </children>
       </HBox>
    </top>
